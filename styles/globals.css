@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+:root {
+  color-scheme: light;
+
+  /* Default light theme: white background + dark text. */
+  --bg: #ffffff;
+  --panel: #ffffff;
+  --text: #0f172a; /* slate-900 */
+  --muted: #475569; /* slate-600 */
+  --border: rgba(148, 163, 184, 0.6);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #020617; /* slate-950 */
+  --panel: #0f172a; /* slate-800-ish */
+  --text: #e2e8f0; /* slate-200 */
+  --muted: #94a3b8; /* slate-400 */
+  --border: rgba(51, 65, 85, 0.9);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Montserrat", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  /* Match all primary CTA-like buttons to the requested green gradient. */
+  button[class*="bg-sky-600"],
+  button[class*="bg-rose-600"],
+  button[class*="bg-emerald-"],
+  button[class*="bg-slate-800"],
+  button[class*="bg-slate-900"] {
+    background-image: linear-gradient(90deg, #16a34a 0%, #22c55e 52%, #a3e635 100%) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+  }
+
+  /* SECTION: Global hover color unification (same as button gradient) */
+  button:hover,
+  a:hover,
+  select:hover,
+  input:hover,
+  textarea:hover {
+    background-image: linear-gradient(90deg, #16a34a 0%, #22c55e 52%, #a3e635 100%) !important;
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #ffffff !important;
+  }
+}
+
+/* Light-theme overrides for existing “dark Tailwind” classes. */
+/* This keeps the UI readable when defaulting to light mode. */
+html:not([data-theme="dark"]) {
+  color: #0f172a;
+}
+
+html:not([data-theme="dark"]) .bg-slate-950:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-950\/80:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-950\/40:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-900:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-900\/80:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-900\/50:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-900\/40:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-800:not(button):not(a),
+html:not([data-theme="dark"]) .bg-slate-900\/80:not(button):not(a) {
+  background-color: #ffffff !important;
+}
+
+html:not([data-theme="dark"]) .text-slate-100,
+html:not([data-theme="dark"]) .text-slate-50,
+html:not([data-theme="dark"]) .text-slate-200,
+html:not([data-theme="dark"]) .text-slate-300,
+html:not([data-theme="dark"]) .text-slate-400,
+html:not([data-theme="dark"]) .text-slate-500,
+html:not([data-theme="dark"]) .text-slate-600,
+html:not([data-theme="dark"]) .text-slate-700,
+html:not([data-theme="dark"]) .text-slate-800,
+html:not([data-theme="dark"]) .text-slate-900,
+html:not([data-theme="dark"]) .text-slate-950,
+html:not([data-theme="dark"]) .text-white,
+html:not([data-theme="dark"]) .text-sky-400,
+html:not([data-theme="dark"]) .text-rose-400,
+html:not([data-theme="dark"]) .text-emerald-400 {
+  color: #0f172a !important;
+}
+
+html:not([data-theme="dark"]) .border-slate-800,
+html:not([data-theme="dark"]) .border-slate-700 {
+  border-color: rgba(148, 163, 184, 0.55) !important;
+}
